@@ -44,15 +44,6 @@ sections:
           - Sit amet consectetur adipiscing elit quisque faucibus ex.
           - Adipiscing elit quisque faucibus ex sapien vitae pellentesque.
 
-      - title: Position Title
-        subtitle: Organization D
-        date: Month Year – Month Year
-        location: City, State
-        details:
-          - Lorem ipsum dolor sit amet consectetur adipiscing elit.
-          - Sit amet consectetur adipiscing elit quisque faucibus ex.
-          - Adipiscing elit quisque faucibus ex sapien vitae pellentesque.
-
   - title: Education
     template: items
     item_class: education-item

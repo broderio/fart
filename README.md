@@ -35,6 +35,16 @@ python resume_generator.py resume.yaml --format pdf --output resume.pdf
 
 The only file that needs to be manually edited is `resume.yaml`.
 
+## Regenerate theme examples
+
+After installing the dependencies and Playwright's Chromium browser, regenerate all example PDFs and their README preview images with:
+
+```bash
+./generate_examples.sh
+```
+
+The script uses `resume.yaml` for each theme. It creates PDF previews with macOS Quick Look or, on other systems, `pdftoppm`. Set `PYTHON` to choose a specific Python executable.
+
 ## Theme examples
 
 Previews of each theme are shown below. Select a preview to open its full PDF.
