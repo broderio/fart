@@ -1,0 +1,38 @@
+/* Modern: spacious sans-serif typography with a crisp blue accent. */
+:root {
+  --color-text: #263244;
+  --color-heading: #101827;
+  --color-muted: #64748b;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-rule: #dbe3ee;
+  --color-page: #ffffff;
+  --color-body: #ffffff;
+
+  --font-family-main:
+    Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+
+  --page-padding-top: 6mm;
+  --page-padding-right: 8mm;
+  --page-padding-bottom: 6mm;
+  --page-padding-left: 8mm;
+
+  --contact-separator: "/";
+  --contact-separator-color: #a7b4c5;
+  --organization-color: #40516a;
+}
+
+.resume-header {
+  border-bottom: 1.1mm solid var(--color-heading);
+  text-align: left;
+}
+
+.resume-name {
+  letter-spacing: -0.9pt;
+}
+
+.section-title {
+  gap: 3mm;
+  letter-spacing: 1.25pt;
+}

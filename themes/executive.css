@@ -1,0 +1,104 @@
+/* Executive: structured navy typography with restrained gold accents. */
+:root {
+  --color-text: #283746;
+  --color-heading: #132a43;
+  --color-muted: #5e6d7c;
+  --color-accent: #264864;
+  --color-accent-hover: #a77b32;
+  --color-rule: #d7dee5;
+  --color-page: #ffffff;
+  --color-body: #ffffff;
+
+  --font-family-main: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif;
+  --font-size-name: 29pt;
+  --font-size-section: 10pt;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 650;
+  --font-weight-bold: 700;
+
+  --page-padding-top: 10mm;
+  --page-padding-right: 13mm;
+  --page-padding-bottom: 10mm;
+  --page-padding-left: 13mm;
+
+  --spacing-lg: 4mm;
+  --spacing-xl: 5mm;
+  --list-indent: 4.5mm;
+  --list-padding-horizontal: 1mm;
+  --contact-gap: 3mm;
+  --border-width: 0.4mm;
+  --text-underline-offset: 1.5px;
+  --contact-separator: "|";
+  --contact-separator-color: #a77b32;
+  --organization-color: #132a43;
+  --executive-gold: #a77b32;
+}
+
+body {
+  line-height: 1.38;
+}
+
+.resume-header {
+  margin-bottom: 6mm;
+  padding: 0 0 2mm 4mm;
+  border-left: 1.2mm solid var(--executive-gold);
+  text-align: left;
+}
+
+.resume-name {
+  letter-spacing: 0.2pt;
+}
+
+.contact-info {
+  gap: 1.5mm 3mm;
+}
+
+.section-title {
+  gap: 2.5mm;
+  margin-bottom: 2.5mm;
+  padding-bottom: 1mm;
+  border-bottom: var(--border-width) solid var(--executive-gold);
+  color: var(--color-accent);
+  letter-spacing: 1pt;
+}
+
+.section-title::after {
+  content: none;
+}
+
+.experience-item,
+.project-item,
+.education-item {
+  margin-bottom: 2.5mm;
+}
+
+.item-header {
+  margin-bottom: 0.5mm;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+.item-details {
+  margin-top: 1.2mm;
+}
+
+.item-details li {
+  margin-bottom: 0.6mm;
+}
+
+.item-details li::marker,
+.skill-separator {
+  color: var(--executive-gold);
+}
+
+.skills-list {
+  row-gap: 1mm;
+}
+
+.skill-category {
+  line-height: 1.38;
+}
+
+.section-text {
+  line-height: 1.45;
+}

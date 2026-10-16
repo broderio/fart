@@ -12,7 +12,14 @@ from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 ROOT_DIR = Path(__file__).resolve().parent
 TEMPLATE_DIR = ROOT_DIR / "templates"
-STYLE_DIR = ROOT_DIR / "styles"
+STYLE_DIR = ROOT_DIR / "themes"
+BASE_STYLE_PATH = STYLE_DIR / "base.css"
+STYLES = {
+    "modern": Path("modern.css"),
+    "classic": Path("classic.css"),
+    "executive": Path("executive.css"),
+    "silly": Path("silly.css"),
+}
 
 
 def load_config(path: Path) -> dict[str, Any]:
@@ -38,15 +45,23 @@ def load_config(path: Path) -> dict[str, Any]:
     return config
 
 
-def load_css() -> str:
-    """Load the CSS and return it as a string."""
+def load_css(style: str = "modern") -> str:
+    """Combine shared layout rules with the selected theme styling."""
 
-    css_path = STYLE_DIR / "resume.css"
+    if style not in STYLES:
+        choices = ", ".join(STYLES)
+        raise ValueError(f"Unknown style '{style}'. Choose from: {choices}.")
 
-    if not css_path.exists():
-        raise FileNotFoundError(f"CSS file not found: {css_path}")
+    if not BASE_STYLE_PATH.exists():
+        raise FileNotFoundError(f"Base CSS file not found: {BASE_STYLE_PATH}")
 
-    return css_path.read_text(encoding="utf-8")
+    theme_path = STYLE_DIR / STYLES[style]
+    if not theme_path.exists():
+        raise FileNotFoundError(f"Theme CSS file not found: {theme_path}")
+
+    base_css = BASE_STYLE_PATH.read_text(encoding="utf-8")
+    theme_css = theme_path.read_text(encoding="utf-8")
+    return f"{base_css}\n\n{theme_css}"
 
 
 def create_environment() -> Environment:
@@ -61,13 +76,13 @@ def create_environment() -> Environment:
     )
 
 
-def render_html(config: dict[str, Any]) -> str:
+def render_html(config: dict[str, Any], style: str = "modern") -> str:
     """Render the resume configuration into standalone HTML."""
 
     environment = create_environment()
     template = environment.get_template("resume.html.j2")
 
-    css = load_css()
+    css = load_css(style)
 
     return template.render(
         resume=config["resume"],
@@ -163,6 +178,13 @@ def build_parser() -> argparse.ArgumentParser:
     )
 
     parser.add_argument(
+        "--style",
+        choices=tuple(STYLES),
+        default="modern",
+        help="Resume visual style. Defaults to modern.",
+    )
+
+    parser.add_argument(
         "--output",
         "-o",
         type=Path,
@@ -178,7 +200,7 @@ def main() -> int:
 
     try:
         config = load_config(args.config)
-        html = render_html(config)
+        html = render_html(config, style=args.style)
 
         output_path = args.output or default_output_path(
             args.config,
