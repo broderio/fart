@@ -1,4 +1,4 @@
-# YART: Yet Another Resume Template
+# FART: Freaking Awesome Resume Template
 
 ### Your resume, maintained as one local YAML file.
 
