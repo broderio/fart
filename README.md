@@ -4,8 +4,6 @@
 
 Keep your experience and contact details in a simple file on your computer. Generate a polished PDF or a standalone HTML resume whenever you need an update—without hand-editing HTML or relying on a hosted resume builder.
 
-**Edit your content. Choose a style. Generate your resume.**
-
 ## Why this approach?
 
 - **One source of truth:** Update your local YAML file; the generator handles the layout and formatting.
