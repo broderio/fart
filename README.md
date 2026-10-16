@@ -1,8 +1,22 @@
 # Resume Generator
-Generate a polished resume from a simple YAML configuration file—no HTML editing required.
 
-# Usage
-Create a virtual environment and install the dependencies:
+### Your resume, maintained as one local YAML file.
+
+Keep your experience and contact details in a simple file on your computer. Generate a polished PDF or a standalone HTML resume whenever you need an update—without hand-editing HTML or relying on a hosted resume builder.
+
+**Edit your content. Choose a style. Generate your resume.**
+
+## Why this approach?
+
+- **One source of truth:** Update your local YAML file; the generator handles the layout and formatting.
+- **Your data stays yours:** Resume content and generation stay on your computer. No account or online editor is required.
+- **Easy to maintain:** YAML is human-readable, so updating a role, date, or skill is straightforward.
+- **Flexible output:** Generate a PDF for applications or standalone HTML to share and view in a browser.
+- **Design is separate from content:** Switch themes without rewriting your resume details. CSS and templates are there only if you want deeper customization.
+
+## Get started
+
+### 1. Install dependencies
 
 ```bash
 python -m venv .venv
@@ -11,43 +25,34 @@ pip install -r requirements.txt
 playwright install chromium
 ```
 
-Generate HTML:
-```bash
-python resume_generator.py resume.yaml --format html
-```
+### 2. Keep your resume content in YAML
 
-Choose a visual style (`modern`, `classic`, `executive`, or `silly`; defaults to `modern`):
-```bash
-python resume_generator.py resume.yaml --style classic
-```
-
-Generate PDF:
-```bash
-python resume_generator.py resume.yaml --format pdf
-```
-
-The selected stylesheet is embedded in generated HTML, so each HTML resume remains a standalone file.
-
-Specify an output file:
-```bash
-python resume_generator.py resume.yaml --format pdf --output resume.pdf
-```
-
-The only file that needs to be manually edited is `resume.yaml`.
-
-## Regenerate theme examples
-
-After installing the dependencies and Playwright's Chromium browser, regenerate all example PDFs and their README preview images with:
+Use `resume.yaml` as a starting point. For personal details, make a local copy named `my_resume.yaml`; that filename is ignored by Git in this repository.
 
 ```bash
-./generate_examples.sh
+cp resume.yaml my_resume.yaml
 ```
 
-The script uses `resume.yaml` for each theme. It creates PDF previews with macOS Quick Look or, on other systems, `pdftoppm`. Set `PYTHON` to choose a specific Python executable.
+Edit `my_resume.yaml` to add your own experience, education, projects, and skills.
 
-## Theme examples
+### 3. Generate the resume
 
-Previews of each theme are shown below. Select a preview to open its full PDF.
+```bash
+python resume_generator.py my_resume.yaml --format pdf
+python resume_generator.py my_resume.yaml --format html
+```
+
+By default, the outputs are written beside the YAML file. Choose a theme with `--style` (`modern`, `classic`, `executive`, or `silly`):
+
+```bash
+python resume_generator.py my_resume.yaml --format pdf --style executive
+```
+
+The HTML output embeds its stylesheet, so it remains a self-contained file. To choose a specific output path, add `--output path/to/resume.pdf` (or `.html`).
+
+## Theme gallery
+
+Each preview links to its full PDF.
 
 <table>
 	<tr>
@@ -67,3 +72,11 @@ Previews of each theme are shown below. Select a preview to open its full PDF.
 		<td><a href="examples/silly.pdf"><img src="examples/silly.pdf.png" alt="Silly resume theme preview" width="360"></a></td>
 	</tr>
 </table>
+
+To regenerate the example PDFs and their preview images after installing dependencies, run:
+
+```bash
+./scripts/generate_examples.sh
+```
+
+The script uses `resume.yaml` and creates previews with macOS Quick Look or `pdftoppm`. Set `PYTHON` if you want it to use a specific Python executable.
