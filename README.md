@@ -1,4 +1,4 @@
-# FART: Freaking Awesome Resume Template
+# Freaking Awesome Resume Template
 
 ### Your resume, maintained as one local YAML file.
 
