@@ -1,4 +1,4 @@
-# Resume Generator
+# YART: Yet Another Resume Template
 
 ### Your resume, maintained as one local YAML file.
 
